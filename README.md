@@ -1,3 +1,5 @@
 # Web-Tehnologies-2018-2019
 
-# Information regarding plan for tackling the prototype for project named "Web App Security Alerter" coming 09 March - 11 March, 2019.
+# C4 Diagram Context v1 for Project ASA now available for review.
+
+# C4 Diagram Container(s) coming 13 March - 15 March, 2019.
