@@ -1,0 +1,48 @@
+body {
+
+}
+
+#main-header {
+	display: grid;
+	grid-template-rows: 100%;
+	grid-template-columns: 10% 90%;
+	align-items: center;
+	grid-gap: 1.5em;
+}
+
+/* grid-area: <grid-row-start> <grid-column-start> <grid-row-end> <grid-column-end>; */
+#main-header a {
+	grid-area: 1 / 1 / 2 / 2;
+}
+
+#main-header h1 {
+	grid-area: 1 / 2 / 2 / 3;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:link, a:visited, a:focus {
+	color: white;
+}
+
+a:hover {
+	color: aqua;
+}
+
+nav {
+	font-size: 1.3em;
+	background-color: black;
+	padding: .1em;
+	width: 100%;
+	text-decoration: none;
+	list-style-type: none;
+}
+
+nav ul {
+	display: flex;
+	justify-content: space-around;
+	flex-flow: row wrap;
+	list-style-type: none;
+}
