@@ -1,7 +1,26 @@
-body {
-
+html {
+	font-size: 20px;
 }
 
+@media(max-width: 1580px) {
+	html {
+		font-size: 18px;
+	}
+}
+
+@media(max-width: 980px) {
+	html {
+		font-size: 16px;
+	}
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+}
+
+/* -------------- HEADER START -------------- */
 #main-header {
 	display: grid;
 	grid-template-rows: 100%;
@@ -18,17 +37,23 @@ body {
 #main-header h1 {
 	grid-area: 1 / 2 / 2 / 3;
 }
+/* -------------- HEADER END -------------- */
 
 a {
 	text-decoration: none;
 }
 
-a:link, a:visited, a:focus {
+/* -------------- NAVBAR START -------------- */
+nav a:link, nav a:visited, nav a:focus {
+	transition: color .3s;
 	color: white;
+	opacity: .7;
 }
 
-a:hover {
+nav a:hover {
+	transition: color .3s;
 	color: aqua;
+	opacity: 1;
 }
 
 nav {
@@ -46,3 +71,61 @@ nav ul {
 	flex-flow: row wrap;
 	list-style-type: none;
 }
+/* -------------- NAVBAR END -------------- */
+
+/* -------------- MAIN START -------------- */
+main {}
+/* -------------- MAIN END -------------- */
+
+/* -------------- SECTION SLIDESHOW START -------------- */
+.slideshow-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 75vh;
+	margin-top: 2em;
+	margin-bottom: 5em;
+}
+
+.slideshow-container .slide {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 90%;
+	height: 100%;
+}
+
+.slide h2 {
+	position: absolute;
+	background-color: white;
+	color: darkblue;
+	padding: .2em;
+	font-size: 2em;
+	opacity: .7;
+}
+
+.slide img {
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+
+}
+/* -------------- SECTION SLIDESHOW END -------------- */
+
+/* -------------- FOOTER START -------------- */
+footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: black;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+}
+
+footer p {
+	color: white;
+}
+/* -------------- FOOTER END -------------- */
+
+
