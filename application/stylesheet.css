@@ -14,6 +14,25 @@ html {
 	}
 }
 
+@media(max-width: 400px) {
+	#logo img {
+		height: 30px;
+		width: 45px;
+	}
+}
+
+@media(min-width: 780px) {
+	.facilities {
+		width: 780px;
+	}
+}
+
+.facilities {
+	margin-left: 3%;
+	margin-right: 3%;
+}
+
+
 html, body {
 	margin: 0;
 	padding: 0;
@@ -125,7 +144,7 @@ footer {
 	width: 100%;
 	height: 100%;
 	margin: 0;
-	margin-top: 27%;
+	margin-top: 35%;
 }
 
 footer p {
