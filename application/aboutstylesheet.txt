@@ -1,0 +1,8 @@
+
+
+@media(min-width: 780px) {
+	.facilities {
+		width: 780px;
+		margin-left: 5%;
+	}
+}
