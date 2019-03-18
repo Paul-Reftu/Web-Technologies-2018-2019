@@ -96,6 +96,351 @@ nav ul {
 }
 /* -------------- NAVBAR END -------------- */
 
+/* -------------- LOGIN START --------------*/
+
+@media (min-width: 900px) {
+    #loginMain {
+        text-align: center;
+        margin-top: 3%;
+        margin-bottom: 3%;
+        margin-left: 30%;
+        margin-right: 30%;
+        background-color: #333333;
+        min-height: 350px;
+        color: white;
+    }
+    #loginMain h1 {
+        margin-top: -0.5em;
+    }
+    #loginPhoto {
+        width: 20%;
+        height: 20%;
+    }
+    .login {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 10%;
+        justify-items: center;
+        grid-gap: 1em;
+    }
+    #loginUsername {
+        grid-row: 1;
+        grid-column: 1/3;
+        font-size: 150%;
+    }
+    #loginPassword {
+        grid-row: 2;
+        grid-column: 1/3;
+        font-size: 150%;
+    }
+    div input {
+        height: 25px;
+    }
+    #register {
+        grid-row: 4;
+        color: white;
+        margin-top: 2.5em;
+        height: 4em;
+        width: 8em;
+        font-size: 130%;
+        background: none;
+        border: none;
+        font-weight: bold;
+    }
+    #register:hover {
+        transition: color .3s;
+        color: aqua;
+        opacity: 1;
+    }
+    #login {
+        grid-row: 4;
+        grid-column: 2;
+        font-size: 130%;
+        background: aqua;
+        height: 4em;
+        width: 8em;
+        border: none;
+        margin-top: 1em;
+    }
+    #login:hover {
+        border: 3px solid #00a3cc;
+    }
+    #loginUsername {
+        size: 120%;
+        margin-top: 1em;
+        margin-left: 1 em;
+        margin-bottom: 1em;
+        margin-right: 1em;
+    }
+    #loginPassword {
+        size: 120%;
+        margin-top: 1em;
+        margin-left: 1 em;
+        margin-bottom: 1em;
+        margin-right: 1em;
+    }
+}
+
+#loginMain p {
+    grid-row: 3;
+    grid-column: 1/3;
+}
+
+#loginMain p a {
+    color: white;
+}
+
+#loginMain p a:hover {
+    transition: color .3s;
+    color: aqua;
+    opacity: 1;
+}
+
+@media (max-width: 900px) {
+    #loginMain p a {
+        color: white;
+    }
+    #loginMain p a:hover {
+        transition: color .3s;
+        color: aqua;
+        opacity: 1;
+    }
+    main {
+        background-color: #333333;
+        margin: 0px;
+        padding: 0px;
+    }
+    #loginMain {
+        text-align: center;
+        margin-top: 1%;
+        margin-bottom: 1%;
+        margin-left: 5%;
+        margin-right: 5%;
+        background-color: #333333;
+        min-height: 350px;
+        color: white;
+        margin: 0px;
+    }
+    #loginMain h1 {
+        margin-top: -0.5em;
+    }
+    #loginPhoto {
+        width: 20%;
+        height: 20%;
+    }
+    .login {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #loginUsername {
+        font-size: 150%;
+    }
+    #loginPassword {
+        font-size: 150%;
+    }
+    div input {
+        height: 25px;
+    }
+    #register {
+        color: white;
+        margin-top: 2.5em;
+        height: 4em;
+        width: 8em;
+        font-size: 130%;
+        background: none;
+        border: none;
+        font-weight: bold;
+    }
+    #register:hover {
+        transition: color .3s;
+        color: aqua;
+        opacity: 1;
+    }
+    #login {
+        font-size: 130%;
+        background: aqua;
+        height: 4em;
+        width: 8em;
+        border: none;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+    #login:hover {
+        border: 3px solid #00a3cc;
+    }
+    #loginUsername {
+        size: 120%;
+        margin-top: 1em;
+        margin-left: 1 em;
+        margin-bottom: 1em;
+        margin-right: 1em;
+    }
+    #loginPassword {
+        size: 120%;
+        margin-top: 1em;
+        margin-left: 1 em;
+        margin-bottom: 1em;
+        margin-right: 1em;
+    }
+}
+
+/* -------------- LOGIN END --------------*/
+
+/* -------------- CREATE ACCOUNT START --------------*/
+
+.register {
+    text-align: center;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    margin-left: 30%;
+    margin-right: 30%;
+    background-color: #333333;
+    min-height: 350px;
+    color: white;
+}
+
+.register button {
+    font-size: 130%;
+    background: #4cc5a7;
+    height: 4em;
+    width: 8em;
+    border: none;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.register form div {
+    margin: 1em;
+    display: grid;
+    grid-column: 1fr 1fr;
+    justify-content: center;
+}
+
+.register form div label {
+    grid-column: 1;
+}
+
+.register form div input {
+    grid-column: 2;
+}
+
+#registerPhoto {
+    width: 20%;
+    height: 20%;
+    margin: 1em;
+}
+
+.register h1 {
+    margin-top: -0.5em;
+}
+
+.register form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 1em;
+}
+
+@media (max-width: 900px) {
+    main {
+        margin: 0px;
+        background-color: #333333;
+    }
+    .register {
+        margin: 0px;
+    }
+    .register form {
+        margin: 0px;
+    }
+}
+
+/* -------------- CREATE ACCOUNT END --------------*/
+
+/* -------------- FORGOT PASSWORD START  --------------*/
+
+@media(min-width: 900px) {
+    #divFP {
+        text-align: center;
+        margin-top: 3%;
+        margin-bottom: 3%;
+        margin-left: 30%;
+        margin-right: 30%;
+        background-color: #333333;
+        min-height: 350px;
+        color: white;
+    }
+    #mailFP {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 1em;
+    }
+    #FP {
+        font-size: 130%;
+        background: aqua;
+        height: 4em;
+        width: 8em;
+        border: none;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+    #FP:hover {
+        border: 3px solid #00a3cc;
+    }
+    
+}
+
+@media(max-width: 900px) {
+    #divFP {
+        margin: 0px;
+        padding: 1em;
+        text-align: center;
+        margin-top: 3%;
+        margin-bottom: 3%;
+        margin-left: 30%;
+        margin-right: 30%;
+        background-color: #333333;
+        min-height: 350px;
+        color: white;
+    }
+
+    
+    #mailFP {
+
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 1em;
+    }
+    #FP {
+        font-size: 130%;
+        background: aqua;
+        height: 4em;
+        width: 7em;
+        border: none;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+    #FP:hover {
+        border: 3px solid #00a3cc;
+    }
+    .mainFP{
+        margin: 0px;
+        padding: 1em;
+        background-color: #333333;
+    }
+    .mainFP h1{
+        margin: 0px;
+    }
+    .mainFP form{
+        margin: 0px;
+    }
+}
+
+/* -------------- FORGOT PASSWORD END --------------*/
+
+
 /* -------------- MAIN START -------------- */
 main {}
 /* -------------- MAIN END -------------- */
