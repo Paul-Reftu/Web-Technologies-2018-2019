@@ -34,8 +34,8 @@
             <li><a href="makeaccount.html">Create Account</a></li>
         </ul>
     </nav>
-    <main>
-        <div id=filter>
+    <main id="softvuln">
+        <div id="filter">
             <p>Filter type 1</p>
             <ul>
                 <li><input type="checkbox"> filter 1</li>
@@ -52,13 +52,26 @@
             </ul>
 
         </div>
-        <div>
+        <div id="vuln">
+        <div id="search">
             <form action="/search">
+                <img src="assets/images/search.png"></img>
                 <input type="text" id="search" placeholder="Search for what you want here" />
                 <button type="submit">Search</button>
             </form>
-        
         </div>
+        <div id="vulninf">
+            <div class="vulnerabilitate">
+                <div>Date</div>
+                <div><abbr title="Downloadable">D</abbr></div>
+                <div><abbr title="Vulnerable Aplication">A</abbr></div>
+                <div><abbr title="Verified">V</abbr></div>
+                <div>Title</div>
+                <div>Type</div>
+                <div>Platform</div>
+            </div>
+        </div>
+    </div>
     </main>
 </body>
 
