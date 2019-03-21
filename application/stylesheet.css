@@ -39,6 +39,35 @@ html, body {
 	overflow-x: hidden;
 }
 
+.button {
+  cursor: pointer;
+  background-color: Blue; 
+  border: none;
+  color: white;
+  padding: 1.3% 3%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 90%;
+  
+  -webkit-transition-duration: 0.4s; 
+  transition-duration: 0.4s;
+  
+  margin-left: 1.25em;
+}
+
+.button:hover {
+  background-color: Red;
+  color: white;
+}
+
+.searchbar {
+	width: 40%;
+	height: 2.5em;
+}
+
+
+
 /* -------------- HEADER START -------------- */
 #main-header {
 	display: grid;
