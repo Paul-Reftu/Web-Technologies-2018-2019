@@ -1,10 +1,11 @@
-# Web-Tehnologies-2018-2019
-# News: 1936 Hrs, Thursday, March 14, 2019
+# Web-Tehnologies-2018-2019, Project ASA
 
+# Trello Board "Front-End Development": https://trello.com/b/S2b7CROU/front-end-development-project-asa
+# Trello Board "C4 Diagram": https://trello.com/b/cVyliijJ/project-asa-c4-diagram
+# Trello Board "Information Architecture": https://trello.com/b/UY9QZetp/project-asa-information-architecture
 
-1) C4 Diagram Containers v1 for Project ASA now available for review.
-2) C4 Diagram Context v1 updated (added external Software System entity "Microsoft Exchange")
+# Students assigned to this project:
 
-3) C4 Diagram Components coming 15 Mar - 17 Mar, 2019.
-4) HTML Skeleton for front-end interface coming 15 Mar - 16 Mar, 2019.
-5) CSS "Make-up" for front-end interface coming 16 Mar - 18 Mar, 2019.
+1) Reftu Paul-Alexandru
+2) Ruse Daniel-Stefan
+3) Popescu Flavius-Petru
