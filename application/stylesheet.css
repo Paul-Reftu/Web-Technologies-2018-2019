@@ -1,5 +1,6 @@
 html {
 	font-size: 20px;
+    font-family: "Times New Roman", "Times", "Serif";
 }
 
 @media(max-width: 1580px) {
@@ -566,15 +567,21 @@ main {}
 	margin-bottom: 5em;
 }
 
-.slideshow-container .slide {
+.slideshow-container #slide {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 90%;
 	height: 100%;
+    opacity: 1;
+    transition: opacity 1.6s;
 }
 
-.slide h2 {
+.slideshow-container #slide.fadeOut {
+    opacity : 0;
+}
+
+#slide h2 {
 	position: absolute;
 	background-color: white;
 	color: darkblue;
@@ -583,7 +590,7 @@ main {}
 	opacity: .7;
 }
 
-.slide img {
+#slide img {
 	z-index: -1;
 	width: 100%;
 	height: 100%;
