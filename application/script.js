@@ -3,6 +3,10 @@ var slideTimeout = 4100;
 var slideshowImages = ["assets/images/slide_1.jpg",
 	"assets/images/slide_2.jpg",
 	"assets/images/slide_3.jpg"];
+var slideshowDescriptions = ["First image of the slideshow: a lock sitting on a keyboard",
+	"Second image of the slideshow: a programmer working on multiple screens",
+	"Third image of the slideshow: java code"
+];
 var slideshowHeaders = ["Protect what is yours.",
 			"Know the latest security threats.",
 			"Learn how to engineer \"hackproof\" systems."];
@@ -18,6 +22,8 @@ function slideshow() {
 	setTimeout(function() {
 		document.getElementById("slide").querySelector("img").src = 
 			slideshowImages[slideNo];
+		document.getElementById("slide").querySelector("img").alt =
+			slideshowDescriptions[slideNo];
 		document.getElementById("slide").querySelector("h2").innerHTML = 
 			slideshowHeaders[slideNo];
 		slide.classList.remove("fadeOut");
