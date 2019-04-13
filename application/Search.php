@@ -81,7 +81,23 @@
 		private $decodedResults;
 
 
+		/*
+		 * Cross Site Scripting (XSS) - proof method that echoes given  property from an exploit
+		 */
+		public function echoProperty($prop, $propName) {
+			if (is_array($prop)) {
+				foreach ($prop as $subProp) {
+					echo "<li>" . $propName . ": " . htmlspecialchars($subProp, ENT_QUOTES, "UTF-8") . "</li>";
+				}
+			}
+			else if (is_string($prop)) {
+				echo "<li>" . $propName . ": " . htmlspecialchars($prop, ENT_QUOTES, "UTF-8") . "</li>";
+			}
+		}
+
+
 		public function __construct() {
+
 			if (isset($_GET["description"])) {
 				$this->description = $_GET["description"];
 
@@ -89,33 +105,56 @@
 				$this->decodedResults = json_decode($this->results);
 				$this->totalResults = $this->decodedResults->total;
 
+				echo "<div class='searchResults'>";
+
+				echo "<div>";
 				echo "Searching for " . $this->description . "..." . "<br/>";
 				echo "Found " . $this->totalResults . " matches." . "<br/><br/>";
+				echo "</div>";
 
+				
 				foreach ($this->decodedResults->matches as $match) {
-					echo "<h3>Exploit " . $match->_id . ":" . "</h2>";
+					echo "<div>";
+					echo "<h3>Exploit " . $match->_id . ":" . "</h3>";
 
 					echo "<ul>";
-					if (isset($match->author)) {
-						if (is_array($match->author)) {
-							foreach ($match->author as $author) {
-								echo "<li>Author: " . $author . "</li>";
-							}
-						}
-						else if (is_string($match->author)) {
-							echo "<li>Author: " . $match->author . "</li>";
-						}
-					}
-					if (isset($match->description)) {
-						echo "<li>Description: " . $match->description . "</li>";
-					}
+
+					if (isset($match->author)) 
+						$this->echoProperty($match->author, "Author");
+					if (isset($match->bid))
+						$this->echoProperty($match->bid, "Bugtraq (B) id:");
+					if (isset($match->code))
+						$this->echoProperty($match->code, "Code");
+					if (isset($match->cve))
+						$this->echoProperty($match->cve, "Common Vulnerability and Exposures (CVE) id");
+					if (isset($match->date))
+						$this->echoProperty($match->date, "Release date");
+					if (isset($match->description))
+						$this->echoProperty($match->description, "Description");
+					if (isset($match->msb))
+						$this->echoProperty($match->msb, "Microsoft Security Bulletin (MSB) id");
+					if (isset($match->osvdb))
+						$this->echoProperty($match->osvdb, "Open Source Vulnerability Database (OSVDB) id");
+					if (isset($match->source))
+						$this->echoProperty($match->source, "Source");
+					if (isset($match->platform))
+						$this->echoProperty($match->platform, "Target platform");
+					if (isset($match->port))
+						$this->echoProperty($match->port, "Port of affected service");
+					if (isset($match->type))
+						$this->echoProperty($match->type, "Exploit type");
+
 					echo "</ul>";
+					echo "</div>";
 				}
 
+				echo "</div>";
 			}
-			
 		}
+
 	}
+
+
 
 	new Search();
 

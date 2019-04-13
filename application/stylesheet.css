@@ -614,3 +614,35 @@ footer p {
 	color: white;
 }
 /* -------------- FOOTER END -------------- */
+
+/* -------------- searchResults START -------------- */
+
+.searchResults {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchResults div:first-child {
+    margin-top: 1em;
+    font-size: 2em;
+}
+
+.searchResults div:not(:first-child) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border: 2px solid white;
+    border-radius: 1.5em;
+    margin: .7em 3em;
+    padding: 1em;
+    background-color: #333333;
+    color: white;
+}
+
+/* -------------- searchResults END -------------- */
+
+
+
