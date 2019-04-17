@@ -18,8 +18,7 @@
         include("Header.php"); 
         include("Navbar.php");
     ?>
-
-    <main id="softvuln">
+<main id="softvuln">
         <div id="filter">
             <p>Filter type 1</p>
             <ul>
@@ -38,10 +37,10 @@
 
         </div>
         <div id="vuln">
-        <div id="search">
-            <form action=<?php echo $_SERVER['PHP_SELF']; ?> method="get">
-                <img src="assets/images/search.png"></img>
-                <input type="text" name="description" id="search" placeholder="Search for what you want here" />
+        <div class="search">
+            <form action="Search.php" method="get">
+                <img src="assets/images/search.png" alt="Search Photo">
+                <input type="text" name="description" class="search" placeholder="Search for what you want here" />
                 <button type="submit">Search</button>
             </form>
         </div>
