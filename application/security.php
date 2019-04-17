@@ -18,10 +18,9 @@
         include("Header.php"); 
         include("Navbar.php");
     ?>
-
-	<main>
+<main>
 	
-		<img src="assets/images/security.jpg" height=100% width=100%>
+		<img src="assets/images/security.jpg" alt= "security" style ="width:100%; height:100%;">
 		
 		<section class="facilities">
 			<h2>
@@ -37,7 +36,7 @@
 		<aside>
 		</aside>
 	</main>
-
+	
 	<?php
 		include("Footer.php");
 	?>
