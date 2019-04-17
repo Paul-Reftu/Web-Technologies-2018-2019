@@ -184,7 +184,6 @@ nav ul {
     }
     #login {
         grid-row: 4;
-        grid-column: 2;
         font-size: 130%;
         background: aqua;
         height: 4em;
@@ -196,16 +195,14 @@ nav ul {
         border: 3px solid #00a3cc;
     }
     #loginUsername {
-        size: 120%;
         margin-top: 1em;
-        margin-left: 1 em;
+        margin-left: 1em;
         margin-bottom: 1em;
         margin-right: 1em;
     }
     #loginPassword {
-        size: 120%;
         margin-top: 1em;
-        margin-left: 1 em;
+        margin-left: 1em;
         margin-bottom: 1em;
         margin-right: 1em;
     }
@@ -300,16 +297,14 @@ nav ul {
         border: 3px solid #00a3cc;
     }
     #loginUsername {
-        size: 120%;
         margin-top: 1em;
-        margin-left: 1 em;
+        margin-left: 1em;
         margin-bottom: 1em;
         margin-right: 1em;
     }
     #loginPassword {
-        size: 120%;
         margin-top: 1em;
-        margin-left: 1 em;
+        margin-left: 1em;
         margin-bottom: 1em;
         margin-right: 1em;
     }
@@ -343,7 +338,6 @@ nav ul {
 .register form div {
     margin: 1em;
     display: grid;
-    grid-column: 1fr 1fr;
     justify-content: center;
 }
 
@@ -509,23 +503,23 @@ nav ul {
     background-color: #333333;
     color: white;
 }
-#search{
+.search{
     width: 70%;
     padding: 1em;
 }
-#search img{
+.search img{
     width: 3em;
     height: 3em;
     float: left;
     margin: 0.1em;
 }
-#search button{
+.search button{
     width: 10%;
     height: 4em;
     background-color: white;
     border: 1px solid darkgray;
 }
-#search button:hover{
+.search button:hover{
     background-color: darkgray;
     border: 1px solid white;
 }
@@ -538,7 +532,7 @@ nav ul {
 .vulnerabilitate div{
     text-align: center;
     vertical-align:  center;
-    height: 2   em;
+    height: 2em;
     background-color: darkgray;
     border: 1px solid white;
 }
@@ -614,35 +608,3 @@ footer p {
 	color: white;
 }
 /* -------------- FOOTER END -------------- */
-
-/* -------------- searchResults START -------------- */
-
-.searchResults {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.searchResults div:first-child {
-    margin-top: 1em;
-    font-size: 2em;
-}
-
-.searchResults div:not(:first-child) {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    border: 2px solid white;
-    border-radius: 1.5em;
-    margin: .7em 3em;
-    padding: 1em;
-    background-color: #333333;
-    color: white;
-}
-
-/* -------------- searchResults END -------------- */
-
-
-
