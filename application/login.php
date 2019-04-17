@@ -22,18 +22,18 @@
     <main class="lmain">
         <div id="loginMain">
         <!-- https://www.iconfinder.com/icons/480741/account_avatar_contact_guest_login_man_user_icon -->
-        <img id="loginPhoto" src="assets/images/login.png"></img>
+        <img id="loginPhoto" src="assets/images/login.png" alt="Login Photo">
         <h1>Sign in</h1>
         <form class="login" action=/login> <div id=loginUsername>
-            <label for="loginUsername">Username:</label>
+            <label >Username:</label>
             <input type="text" required placeholder="Enter your username" />
             </div>
             <div id=loginPassword>
-                <label for="loginPassword">Password:</label>
+                <label >Password:</label>
                 <input type="password" required placeholder="Enter your password" />
             </div>
-            <p><a href="forgotpass.php">Forgot password?</a></p>
-            <a href="makeaccount.php" id="register">Register</a>
+            <p><a href="forgotpass.html">Forgot password?</a></p>
+            <a href="makeaccount.html" id="register">Register</a>
             <button type="submit" id="login">Login</button>
         </form>
     </div>
