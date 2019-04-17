@@ -22,37 +22,38 @@
     <main class="rmain">
     <div class="register">
             <!-- https://fandi-conference.com/register-icon/ -->
-            <img id="registerPhoto" src="assets/images/register.png"></img> 
+            <img id="registerPhoto" src="assets/images/register.png" alt="Register Photo"> 
         <h1>Register</h1>
         <form action=/register> <div>
-            <label for="registerUsername">Username*:</label>
+            <label>Username*:</label>
             <input type="text" required id="registerUsername" placeholder="Enter your username" />
     </div>
     <div>
-        <label for="registerPassword">Password*:</label>
+        <label >Password*:</label>
         <input type="password" required class="registerPassword" placeholder="Enter your password" />
     </div>
     <div>
-        <label for="registerPassword">Repeat Password*:</label>
+        <label>Repeat Password*:</label>
         <input type="password" required class="registerPassword" placeholder="Repeat password" />
     </div>
     <div>
-        <label for="registerEmail">E-mail*:</label>
+        <label>E-mail*:</label>
         <input type="text" required id="registerEmail" placeholder="Enter your E-mail" />
     </div>
     <div>
-        <label for="registerAge">Age:</label>
+        <label>Age:</label>
         <input type="number" id="registerAge" placeholder="Enter your age" />
     </div>
     <div>
-        <label for="registerSex">Sex:</label>
+        <label>Sex:</label>
         <input type="text" id="registerSex" placeholder="Enter your sex" />
     </div>
     <p id="required">All fields with * are required for register.</p>
     <button type="submit">Register</button>
     </form>
     </div>
-    </main>
+</main>
+
 
     <?php
         include("Footer.php");
