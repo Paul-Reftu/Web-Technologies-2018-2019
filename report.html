@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<title>Project ASA Report</title>
+<meta charset="utf-8" />
+</head>
+
+<body>
+	<header>
+		<h1>Project ASA Report</h1>
+	</header>
+	
+	<main>
+		<section>
+	
+		<h2>What our application will offer</h2>
+		<p> 
+			Our application will mainly offer services concerning information related to security.
+		</p>
+		
+		<p>
+			Namely, it will utilize the web services already provided by certain web applications such as Google Search, 
+			Google Safe Browsing, Shodan and HaveIBeenPwned - with the help of their APIs, which - upon proper usage, will provide 
+			to us the queried information in JSON format - which we will have to decode and utilize accordingly.
+		</p>
+		
+		<p>
+			I will go on to explain briefly how each of these APIs will help us in our app.
+		</p>	
+		
+		<ul>
+			<li>
+				<h3>Google Search</h3>
+				<p>
+					We will utilize this application in order to be able to search articles and general information on the WWW 
+					with regard to security.
+				</p>			
+			</li>
+			<li>
+				<h3>Shodan</h3>
+				<p>
+					Shodan - also known as "Dark Google" will provide us the ability to search for security vulnerabilities/exploits 
+					and inform us certain properties of theirs such as their author, the platform the exploit is intended for 
+					as well as the code itself (be careful if you plan on using it!).
+				</p>			
+			</li>
+			<li>
+				<h3>Google Safe Browsing</h3>
+				<p>
+					This will consist of a search form where a user will be able to introduce several website URLs to check if 
+					their are known to be malicious or not.
+				</p>			
+			</li>
+			<li>
+				<h3>HaveIBeenPwned</h3>
+				<p>
+						This one is pretty self-explanatory. We will provide a simple search form to the user where he/she will 
+						be able to introduce his/her e-mail to check whether it is known to have been compromised in a past 
+						security breach.
+				</p>			
+			</li>
+		</ul>
+		
+		</section>
+		
+		<section>
+			<h2>Diagrams w.r.t our plan</h2>
+			
+			<p>Now, I will present a couple of diagrams that have been and *are* helpful in the execution of our project engineering.</p>
+			
+			<h3>C4 Diagram, Context</h3>
+			<img src="./ASA_c4_diagram/image%20format/ASA_c4_context.PNG" alt="c4_context" style="width:80%;height:80%;"/>
+			
+			<h3>C4 Diagram, Containers</h3>
+			<img src="./ASA_c4_diagram/image%20format/ASA_c4_containers_internetSecurityAlerter.PNG" alt="c4_containers" style="width:80%;height:80%;"/>
+			
+			<h3>C4 Diagram, Components</h3>
+			<h4>Single Page App Component</h4>
+			<img src="./ASA_c4_diagram/image%20format/singlePageApp_comp.PNG" alt="c4_comp_singlePageApp" style="width:80%;height:80%;"/>
+			
+			<h4>Infrastructure Component</h4>
+			<img src="./ASA_c4_diagram/image%20format/infrastructure_comp.PNG" alt="c4_component_infrastructure" style="width:60%;height:45%;"/>
+			<br/><br/>
+			
+			<h4>Service API Component</h4>
+			<img src="./ASA_c4_diagram/image%20format/serviceAPI_comp.PNG" alt="c4_comp_serviceAPI" style="width:60%;height:45%;"/>
+			
+			<h2>ER Diagrams</h2>
+			<h4>Users Diagram</h4>
+			<img src="./ER%20diagrams/Users.png" alt="er_diagram_users" style="width:80%;height:80%;"/>
+			
+			<h4>Exploits Diagram</h4>
+			<img src="./ER%20diagrams/Exploits.png" alt="er_diagram_exploits" style="width:80%;height:80%;"/>
+			
+			<h2>UML Class Diagram</h2>
+			<img src="./UML%20Class%20Diagram/class_diagram.png" alt="uml_class" style="width:80%;height:80%;"/>
+		</section>
+	</main>
+	
+	<br/> <br/> <br/>
+	
+	<footer>
+		<h2>Authors</h2>
+		<p>
+			Paul Alexandru Reftu <br/>
+			Ruse Daniel Stefan <br/>
+			Popescu Flavius Petru <br/>
+		</p>
+	</footer>
+</body>
+
+
+</html>
