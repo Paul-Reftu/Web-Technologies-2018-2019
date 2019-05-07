@@ -24,10 +24,11 @@
 			<br>
 			<h2>See if "you have been pwned" or not!</h2>
 
-			<form>
+			<form action=<?php echo $_SERVER['PHP_SELF']; ?> method="get">
 				Type in your e-mail address: <br>
 				
-				<input class="searchbar" type="text" name="email" autofocus/> <input class="button" type="submit" value="Check"/> <br/> <br/>
+				<input class="searchbar" type="text" name="email" autofocus/> <!--<input class="button" type="submit" value="Check"/> <br/> <br/>-->
+				<button class="button" type="submit">Check</button>
 			</form>
 		</section>
 
@@ -36,6 +37,7 @@
 	</main>
 
 	<?php
+		include("Check.php");
 		include("Footer.php");
 	?>
 </body>

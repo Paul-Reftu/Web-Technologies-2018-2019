@@ -38,7 +38,7 @@
         </div>
         <div id="vuln">
         <div class="search">
-            <form action="Search.php" method="get">
+             <form action=<?php echo $_SERVER['PHP_SELF']; ?> method="get">
                 <img src="assets/images/search.png" alt="Search Photo">
                 <input type="text" name="description" class="search" placeholder="Search for what you want here" />
                 <button type="submit">Search</button>

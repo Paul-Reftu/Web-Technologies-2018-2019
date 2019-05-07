@@ -28,7 +28,7 @@
 
 				<p>A tool that helps you find out if an external website is known to be malicious or not, by checking whether its address is present in Google's Database of blacklisted web resources.</p>
 
-				<p><a href="safebrowsing.html">Try out Safe Browsing now!</a></p>
+				<p><a href="safebrowsing.php">Try out Safe Browsing now!</a></p>
 
 				<h3>HaveIBeenPwned Tool</h3>
 
@@ -36,7 +36,7 @@
 
 				<p>This tool helps you find out which of these web services has had a security breach since the time you first signed up for them, to give you an idea whether you ought to seriously consider changing certain sensitive data such as your password or not.</p>
 
-				<p><a href="haveibeenpwned.html">Try out HaveIBeenPwned now!</a></p>
+				<p><a href="haveibeenpwned.php">Try out HaveIBeenPwned now!</a></p>
 			</section>
 
 		</article>
