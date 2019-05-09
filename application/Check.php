@@ -13,11 +13,15 @@
 		private $noOfBreaches;
 		
 		
+		
+		
 		public function __construct()
 		{
 			
 			 if (isset($_GET["email"]))
 			 {
+				echo "<section class='results_pwnd'>";
+				 
 				$this->emailToCheck = $_GET["email"];
 				 
 				$url = $this->API_ROOT_URL."breachedaccount/". $this->emailToCheck;
@@ -26,11 +30,16 @@
 				curl_setopt($curl, CURLOPT_URL, $url);
 				curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 				curl_setopt($curl, CURLOPT_HEADER, false);
-				curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0'	);
+				curl_setopt($curl, CURLOPT_USERAGENT, 'Chrome/60.0.3112.113'	);
 				$this->data = curl_exec($curl);
 				curl_close($curl);
 				
-				echo $this->data."<br>"."<br>";
+				//echo $this->data."<br>"."<br>";
+				
+				if ($this->data == NULL)
+					echo "This account has not been pwned!";
+				else
+				{
 			
 				$this->decodedResults = json_decode($this->data);
 			 
@@ -95,12 +104,29 @@
 					
 					foreach ($this->decodedResults as $breach)
 					{	
+						$logoPath = $breach->LogoPath;
+						
+						echo "<img src=$logoPath style='width:30%; height:30%'/>"."<br>"."<br>";
+					
 						$description = $breach->Description;
 						
 						echo $description."<br>"."<br>";
+						
+						echo "Compromised data: ";
+						for ($i=0; $i < sizeof($breach->DataClasses)-1; $i++)
+						{
+							echo $breach->DataClasses[$i].", ";
+						}
+						echo $breach->DataClasses[sizeof($breach->DataClasses)-1]."<br>"."<br>";
 					}
+					
+					
+					//echo "<\section>";
 				}
+				}
+				echo "</section>";
 			 } // end of isset($_GET["email"]) if
+			 
 			 
 		}
 	}
