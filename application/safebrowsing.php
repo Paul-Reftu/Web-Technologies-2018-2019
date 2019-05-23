@@ -15,6 +15,9 @@
 
 <body>
 	<?php 
+	include("Header.php"); 
+	include("Navbar.php");
+	?>
 
 	<main>
 		<br>
