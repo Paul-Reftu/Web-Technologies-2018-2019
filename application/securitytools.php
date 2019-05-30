@@ -12,7 +12,10 @@
 	<link rel="stylesheet" href="stylesheet.css" type="text/css"/>
 	<link rel="stylesheet" href="aboutstylesheet.css" type="text/css"/>
 </head>
-
+	<?php 
+        include("Header.php"); 
+        include("Navbar.php");
+    ?>
 	<main>
 		<article>
 			<!-- Image source: https://www.matrix42.com/blog/de/2018/03/09/automated-endpoint-security-vermeiden-sie-wunde-punkte-2/ -->
