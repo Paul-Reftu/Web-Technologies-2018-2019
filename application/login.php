@@ -17,6 +17,11 @@
     <?php 
         include("Header.php"); 
         include("Navbar.php");
+        if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['user']) and isset($_POST['password']))
+        {
+            login();
+        }
+
     ?>
 
     <main class="lmain">
@@ -24,13 +29,14 @@
         <!-- https://www.iconfinder.com/icons/480741/account_avatar_contact_guest_login_man_user_icon -->
         <img id="loginPhoto" src="assets/images/login.png" alt="Login Photo">
         <h1>Sign in</h1>
-        <form class="login" action=/login> <div id=loginUsername>
-            <label >Username:</label>
-            <input type="text" required placeholder="Enter your username" />
+        <form class="login" action="login.php" method="post"> 
+            <div id=loginUsername>
+                <label >Username:</label>
+                <input type="text" required placeholder="Enter your username" name="user" />
             </div>
             <div id=loginPassword>
                 <label >Password:</label>
-                <input type="password" required placeholder="Enter your password" />
+                <input type="password" required placeholder="Enter your password" name="password"/>
             </div>
             <p><a href="forgotpass.html">Forgot password?</a></p>
             <a href="makeaccount.html" id="register">Register</a>
@@ -40,6 +46,29 @@
     </main>
 
     <?php
+        function login(){
+            $user = $_POST['user'];
+            $password = $_POST['password'];
+            $servername = "localhost";
+            $dbuser = "user";
+            $dbpass = "pass";
+            $conn = new mysqli("localhost","root","","proiect");
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+            $result = $conn->query("select id from user where username='".$user."' and password='".$password."'");
+            if ($result->num_rows > 0){
+                $id = $result->fetch_assoc();
+                $id = $id['id'];
+                echo $id;
+            } else{
+                echo "Login failed!";
+            }
+
+            $conn->close();
+            
+        }
+
         include("Footer.php");
     ?>
 </body>
