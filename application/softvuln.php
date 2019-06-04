@@ -15,8 +15,8 @@
 
 <body>
     <?php 
-        include("Header.php"); 
-        include("Navbar.php");
+        require_once("Header.php"); 
+        require_once("Navbar.php");
     ?>
 <main id="softvuln">
         <div id="filter">
@@ -59,8 +59,11 @@
     </main>
 
     <?php
-        include("Search.php"); 
-        include("Footer.php");
+        require_once("softvuln/SoftVulnSearch.php"); 
+
+        new SoftVulnSearch();
+
+        require_once("Footer.php");
     ?>
 </body>
 </html>
