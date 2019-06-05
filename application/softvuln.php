@@ -59,7 +59,7 @@
     </main>
 
     <?php
-        require_once("softVuln/SoftVulnSearch.php"); 
+        require_once("soft_vuln/SoftVulnSearch.php"); 
 
         if (isset($_GET["description"])) {
 
