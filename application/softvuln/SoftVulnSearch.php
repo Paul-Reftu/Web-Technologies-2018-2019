@@ -7,17 +7,22 @@
 	require_once("NotAnExploitViewException.php");
 	require_once("NotAnExploitListException.php");
 
+	/*
+	 * class whose instance performs searches w.r.t software vulnerabilities and that prints their information accordingly
+	 *
+	 * this class obeys the MVC design pattern
+	 */
 	class SoftVulnSearch {
 
 		/*
 		 * key that allows us to use the API 
 		 * current key belongs to Paul Reftu
 		 */
-		private $API_KEY = "X12vohw0JQtdIemto29dopVevQKhM8kB";
+		const API_KEY = "X12vohw0JQtdIemto29dopVevQKhM8kB";
 		/*
 		 * root URL for our exploit queries
 		 */
-		private $API_ROOT_URL = "https://exploits.shodan.io/api/search?query=";
+		const API_ROOT_URL = "https://exploits.shodan.io/api/search?";
 
 		/*
 		 * decoded version of the query results
@@ -39,7 +44,6 @@
 		 * maximum no. of shown page anchors at a time (for navigation to next query results)
 		 */
 		private $noOfShownPageLinks = 5;
-
 		/*
 		 * the maximum no. of read characters from a property's value
 		 *  (prevents the echoing of very long description or code segments of an exploit)
@@ -110,7 +114,7 @@
 			/*
 			 * get JSON file provided by Shodan's API (an example query would be: https://exploits.shodan.io/api/search?query=description=google&page=2&key={API_KEY})
 			 */ 
-			$results = file_get_contents($this->API_ROOT_URL . "description=" . $this->description . "&page=" . ceil(($this->currPage * $this->resultsPerPage) / $this->shodanResultsPerPage) . "&key=" . $this->API_KEY);
+			$results = file_get_contents(self::API_ROOT_URL . "query=" . $this->description . "&page=" . ceil(($this->currPage * $this->resultsPerPage) / $this->shodanResultsPerPage) . "&key=" . self::API_KEY);
 
 			/*
 			 * decode JSON file into a useable PHP object
@@ -120,7 +124,7 @@
 			/*
 			 * check for errors on decoding
 			 */
-			if ($this->decodedResults == null) {
+			if ($this->decodedResults === null) {
 				echo "<h3>No results found</h3>";
 
 				switch (json_last_error()) {
