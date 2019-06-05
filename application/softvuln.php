@@ -61,7 +61,11 @@
     <?php
         require_once("softvuln/SoftVulnSearch.php"); 
 
-        new SoftVulnSearch();
+        if (isset($_GET["description"])) {
+
+            new SoftVulnSearch();
+
+        }
 
         require_once("Footer.php");
     ?>
