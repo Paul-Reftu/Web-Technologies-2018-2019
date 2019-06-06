@@ -19,7 +19,7 @@
     ?>
 
 	<main>
-		<section class="api_guide">
+		<section class="facilities">
 			<h2>Security Alerter API v1 Guide</h2>
 
 			<h3>Currently supported HTTP requests:</h3>
