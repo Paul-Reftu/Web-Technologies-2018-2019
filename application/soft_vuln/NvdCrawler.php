@@ -37,7 +37,7 @@
 
 			if ($this->vulnCveId !== null) {
 
-				$startTime = microtime(true);
+				//$startTime = microtime(true);
 
 				$cve = $this->vulnCveId;
 
@@ -67,6 +67,7 @@
 
 				} // end of '$cve !== null' conditional
 
+				/*
 				$endTime = microtime(true);
 				$elapsedTime = $endTime - $startTime;
 
@@ -80,6 +81,7 @@
 				$mark = "<span style='color:" . $markColor . "'>" . $elapsedTime . "</span>";
 
 				echo "Time taken for reference collection: " . $mark . "<br/>";
+				*/
 
 				return $references;
 
