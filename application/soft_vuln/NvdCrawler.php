@@ -30,6 +30,8 @@
 		/*
 		 * TODO Exception checking
 		 *
+		 * @return an array of references w.r.t the exploit identified by the currently-declared 'vulnCveId' (i.e, the CVE id of said exploit)
+		 *
 		 * crawl through the National Vulnerability Database
 		 *  and obtain helpful references w.r.t a particular exploit
 		 */

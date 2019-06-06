@@ -643,14 +643,14 @@ footer p {
 	justify-content: center;
 }
 
-.main_pwnd .facilities h2,p,form {
+.main_pwnd.facilities h2, .main_pwnd.facilities p, .main_pwnd.facilities form {
 	display: flex;
 	justify-content: center;
 	flex-flow: row wrap;
 	overflow: visible;
 }
 
-main .results_pwnd {
+main.results_pwnd {
 	background-color: black;
 	color: white;
 	margin-top: 3em;
@@ -658,4 +658,18 @@ main .results_pwnd {
 	border-radius: 1em;
 }
 /* -------------- resultsHaveIBeenPwned END -------------- */
+
+/* -------------- api_guide START -------------- */
+
+
+.api_guide p {
+
+    text-align: left;
+
+}
+
+
+
+
+/* -------------- api_guide END -------------- */
 

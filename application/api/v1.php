@@ -4,14 +4,16 @@
 	require_once($_SERVER["DOCUMENT_ROOT"] . "/Web-Tehnologies-2018-2019/application/soft_vuln/NvdCrawler.php");
 
 	header("Access-Control-Allow-Origin: *");
-	header("Content-Type: application/json; charset=UTF-8");
 	header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
 
 	/*
 	 * class whose instance represents Security Alerter's API (version 1)
 	 *
 	 * currently supported requests:
-	 *  GET /api/v1.php/exploits?description={exploit_description}
+	 *  GET /api/v1.php/exploits?description={exploit_description}[&page={page_no}][&format={response_format}]
+	 *
+	 * Remark: No. of returned exploits is maximum 100 per page;
+	 *  Currently supported response formats: json, html
 	 */
 	class API_V1 {
 
@@ -32,11 +34,13 @@
 
 			$requestMethod = $_SERVER["REQUEST_METHOD"];
 
+			$exploitId = $this->getExploitId($uri);
+
 			switch ($_SERVER["REQUEST_METHOD"]) {
 
 				case "GET": {
 
-					if (!isset($_GET["description"])) {
+					if ($exploitId === null && !isset($_GET["description"])) {
 
 						header("HTTP/1.1 400 Bad Request");
 						exit();
@@ -44,10 +48,28 @@
 					}
 					else {
 
-						$exploitSeeker = new ExploitSeeker(1, 5, 100);
+						if ($exploitId === null) {
 
-						$shodanJson = $exploitSeeker->runShodanAPISearch($_GET["description"]);
-						$exploits = $shodanJson->matches;
+							if (isset($_GET["page"]))
+								$exploitPage = $_GET["page"];
+							else
+								$exploitPage = 1;
+
+							$exploitSeeker = new ExploitSeeker($exploitPage, null, null);
+
+							$shodanJson = $exploitSeeker->runShodanAPISearch($_GET["description"]);
+
+						}
+						else {
+
+							$exploitSeeker = new ExploitSeeker(1, null, null);
+
+							$shodanJson = $exploitSeeker->runShodanAPISearch($exploitId)->matches[0];
+
+							if (sizeof($shodanJson->cve) === 0 || $shodanJson->cve[0] !== $exploitId)
+								$shodanJson = null;
+
+						}
 
 						/*
 						 * Until an alternative solution to get the needed
@@ -76,10 +98,54 @@
 						$shodanJson->matches = $exploits;
 						*/
 
-						header("HTTP/1.1 200 OK");
-						echo json_encode($shodanJson, JSON_PRETTY_PRINT);
+						if (!isset($_GET["format"])) {
 
-						
+							header("Content-Type: application/json; charset=UTF-8");
+							header("HTTP/1.1 200 OK");
+
+							echo json_encode($shodanJson, JSON_PRETTY_PRINT);
+
+						}
+						else {
+
+							switch ($_GET["format"]) {
+
+								case "json": {
+
+									header("Content-Type: application/json; charset=UTF-8");
+									header("HTTP/1.1 200 OK");
+
+									echo json_encode($shodanJson, JSON_PRETTY_PRINT);
+
+									break;
+
+								} // end of case json
+
+								case "html": {
+
+									header("Content-Type: text/html; charset=UTF-8");
+									header("HTTP/1.1 200 OK");
+
+									echo $this->jsonToHTML($shodanJson);
+
+									break;
+
+								} // end of case html
+
+								default: {
+
+									header("Content-Type: application/json; charset=UTF-8");
+									header("HTTP/1.1 200 OK");
+
+									echo json_encode($shodanJson, JSON_PRETTY_PRINT);
+
+									break;
+
+								} // end of default case
+
+							} // end of switch for response format
+
+						}		
 
 					}
 
@@ -141,6 +207,65 @@
 				return false;
 
 			return true;
+
+		}
+
+		private function getExploitId($uri) {
+
+			if (!$this->isURIValid($uri))
+				return null;
+
+			$uri_parts = explode("/", $uri);
+
+			$pageNameIndex = $this->findCurrPageName($uri_parts);
+
+			if (sizeof($uri_parts) - 1 === $pageNameIndex + 1)
+				return null;
+
+			return $uri_parts[$pageNameIndex + 2];
+
+		}
+
+		private function jsonToHTML($json) {
+
+			$html = "<table style='border: 4px dashed aqua'>";
+
+			foreach ($json as $key => $val) {
+
+				$html .= "<tr style='border: 1px solid black' valign='top'>";
+
+				if (!is_numeric($key)) {
+
+					$html .= "<td style='border: 1px solid black'>" . $key . ":</td>";
+					$html .= "<td style='border: 1px solid black'>";
+
+				}
+				else {
+
+					$html .= "<td style='border: 1px solid black' colspan='2'>";
+
+				}
+
+				if (is_object($val) || is_array($val)) {
+
+					$html .= $this->jsonToHTML($val);
+
+				}
+				else {
+
+					$html .= $val;
+
+				}
+
+				$html .= "</td>";
+
+				$html .= "</tr>";
+
+			}
+
+			$html .= "</table>";
+
+			return $html;
 
 		}
 
