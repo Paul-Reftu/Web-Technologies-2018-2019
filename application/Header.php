@@ -1,5 +1,5 @@
 <?php
-
+	session_start();
 	class Header {
 
 		public function __construct() {

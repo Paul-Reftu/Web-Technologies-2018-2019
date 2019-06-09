@@ -1,0 +1,33 @@
+main{
+	text-align: center;
+	margin-top: 10%;
+}
+
+form{
+	margin-top: 2%;
+	border: 1px solid lightgrey;
+	width: 50%;
+	margin-left: 25%;
+}
+
+div{
+	margin-top: 1%;	
+}
+
+button{
+	height: 4em;
+	width: 8em;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	margin-left: 2%;
+	margin-right: 2%;	
+	text-decoration: none;
+	background: black;
+	color: darkgrey;
+	border: 1px solid aquamarine;
+	font-weight: bold;
+}
+
+button:hover{
+	color: aqua;
+}

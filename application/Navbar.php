@@ -1,5 +1,4 @@
 <?php
-
     class Navbar {
 
         /*
@@ -9,13 +8,25 @@
         /*
          * URLs present on the navbar
          */
-        private $navURLs = array("index.php", "about.php", "contact.php", "security.php", "softvuln.php", "hackproofpro.php", "securitytools.php", "apiguide.php", "login.php", "makeaccount.php");
+        private $navURLs = array("index.php", "about.php", "contact.php", "security.php", "softvuln.php", "hackproofpro.php", "securitytools.php", "apiguide.php");
         /* 
          * name of the URLs on the navbar (e.g for "index.php" the name is "Home")
          */ 
-        private $navURLName = array("Home", "About", "Contact", "Security", "Software Vulnerabilities", "Hackproof Programming", "Security Tools", "API Guide", "Login", "Create Account");
+        private $navURLName = array("Home", "About", "Contact", "Security", "Software Vulnerabilities", "Hackproof Programming", "Security Tools", "API Guide");
 
         public function __construct() {
+            if(isset($_SESSION['id']) && isset($_SESSION['user'])){
+                $this->navURLs[] = 'user.php';
+                $this->navURLs[] = 'logout.php';
+                $this->navURLName[] = $_SESSION['user'];
+                $this->navURLName[] = 'Log Out';
+            }
+            else{
+                $this->navURLs[] = 'login.php';
+                $this->navURLs[] = 'makeaccount.php';
+                $this->navURLName[] = 'Login';
+                $this->navURLName[] = 'Ceate Account';   
+            }
             $this->currPage = basename($_SERVER['PHP_SELF']);
 
             echo "<nav>";

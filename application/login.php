@@ -49,9 +49,6 @@
         function login(){
             $user = $_POST['user'];
             $password = $_POST['password'];
-            $servername = "localhost";
-            $dbuser = "user";
-            $dbpass = "pass";
             $conn = new mysqli("localhost","root","","proiect");
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
@@ -60,7 +57,13 @@
             if ($result->num_rows > 0){
                 $id = $result->fetch_assoc();
                 $id = $id['id'];
-                echo $id;
+                $_SESSION['id'] = $id;
+                $_SESSION['user'] = $user;
+                $result = $conn->query("select date from date where id= " .$_SESSION['id']);
+                $row = $result->fetch_assoc();
+                header("Location: http://localhost/TW/application/index.php"); /* Redirect browser */
+                exit();
+
             } else{
                 echo "Login failed!";
             }
