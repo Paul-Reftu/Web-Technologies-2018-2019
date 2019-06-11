@@ -1,3 +1,23 @@
+/*
+DROP PACKAGE Math;
+/
+DROP TYPE ARRAY_1D;
+/
+DROP TYPE ARRAY_2D;
+/
+*/
+
+/*
+ * one-dimensional array type
+ */
+CREATE OR REPLACE TYPE Array_1D AS VARRAY(1000) OF FLOAT;
+/
+/*
+ * two-dimensional array type
+ */
+CREATE OR REPLACE TYPE Array_2D AS VARRAY(1000) OF ARRAY_1D;
+/
+
 CREATE OR REPLACE PACKAGE Math IS
   /**
    * Euler's constant
