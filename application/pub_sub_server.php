@@ -76,9 +76,13 @@ function compare(){
 	$total = $row['total'];
 	$date = $row['date'];
 	if ($total < $data['total']){
+		$latest = $date;
 		foreach ($data['matches'] as $vuln) {
 			$an = explode('-', $vuln['_id']);
 			$nr = $an[1];
+			if ($nr > $latest){
+				$latest = $nr;
+			}
 			$an = $an[0];
 			$old_an = explode('-', $date);
 			$old_nr = $old_an[1];
@@ -94,6 +98,7 @@ function compare(){
 				}
 			}
 		}
+		$conn->query('update total set total = ' .$data['total']. ', date = ' .$latest);
 	}
 	return $new;
 }
@@ -113,20 +118,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
     	}
     	$pub_sub->register($sub);
     	$pub = new Publisher();
-  		$vuln = compare();
-  		// $json = '{
-   	// 		"votes": 3700,
-   	// 		"description": "best ip cam search I have found yet.",
-   	// 		"title": "Webcam",
-   	// 		"timestamp": "2010-03-15T13:32:32",
-   	// 		"tags": [
-    // 			"webcam",
-    // 			"tw",
-    // 			"test"
-   	// 		],
-   	// 		"query": "Server: SQ-WEBCAM"
-  		// }';
-  		// $vuln[] = $json;
+  		// $vuln = compare();
+  		$json = '{"votes": 3700,"description": "best ip cam search I have found yet.","title": "Webcam","timestamp": "2010-03-15T13:32:32","tags": ["webcam","tw","test"],"query": "Server: SQ-WEBCAM"}';
+  		$vuln[] = $json;
     	
   		foreach ($vuln as $v) {
   			$pub->update($v, $pub_sub);
