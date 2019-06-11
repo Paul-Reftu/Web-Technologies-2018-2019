@@ -1,13 +1,39 @@
+/*
+DROP TABLE Minds;
+/
+DROP TYPE NeuralNetwork;
+/
+DROP TYPE INTEGER_TABLE;
+/
+DROP TYPE STRING_TABLE;
+/
+DROP TYPE MATRIX;
+/
+DROP TYPE ARRAY_2D;
+/
+DROP TYPE ARRAY_1D;
+/
+DROP TYPE MapStringInt;
+/
+DROP TYPE PairStringIntTable;
+/
+DROP TYPE PairStringInt;
+/
+DROP PACKAGE Math;
+/
+*/
+
+/*
+ * Compilation order: 
+ *  Math.sql -> Matrix.sql -> Map.sql -> NeuralNetwork.sql
+ */
+
+
 CREATE OR REPLACE TYPE STRING_TABLE IS TABLE OF VARCHAR(10000);
 / 
 
 CREATE OR REPLACE TYPE INTEGER_TABLE IS TABLE OF INTEGER;
 /
-
-/*
-DROP TYPE NeuralNetwork;
-/
-*/
 
 CREATE OR REPLACE TYPE NeuralNetwork AS OBJECT
 (
@@ -406,15 +432,28 @@ SELECT DISTINCT REGEXP_SUBSTR('SMITH   WARD   ALLEN    WARD     JONES', '[^ ]+',
   IS NOT NULL;
 */
 
+CREATE TABLE Minds (
+  nn NeuralNetwork
+) NESTED TABLE nn.corpusWords.data STORE AS nn_corpusWords,
+  NESTED TABLE nn.wordCountMap.data STORE AS nn_wordCountMap
+;
+/
+
+/*
+SELECT * FROM ALL_TYPES WHERE OWNER='STUDENT' AND TYPE_NAME='MATRIX';
+SELECT * FROM ALL_TYPE_ATTRS WHERE TYPE_NAME='ARRAY_1D';
+*/
+
 /*
  * usage example
  */
-/*
+
 SET SERVEROUTPUT ON;
 DECLARE
   nn NeuralNetwork;
   predictions STRING_TABLE;
 BEGIN
+
   nn := NeuralNetwork();
   nn.preTraining(
     nn.processCorpus(
@@ -429,7 +468,7 @@ BEGIN
       'See to it that he makes it.'
     ) 
   );
-  nn.training(300);
+  nn.training(5);
   
   nn.predict('people', 5, predictions);
   
@@ -437,9 +476,28 @@ BEGIN
   FOR i IN predictions.FIRST .. predictions.LAST LOOP
     DBMS_OUTPUT.PUT_LINE(predictions(i));
   END LOOP;  
+  
+  INSERT INTO Minds VALUES (nn);
+  
 END;
 /
-*/
+
+DECLARE
+neuralNetwork Minds.nn%TYPE;
+predictions STRING_TABLE;
+BEGIN
+
+  SELECT nn INTO neuralNetwork FROM Minds;
+  
+  neuralNetwork.predict('world', 5, predictions);
+  
+  DBMS_OUTPUT.PUT_LINE('Predictions: ');
+  FOR i IN predictions.FIRST .. predictions.LAST LOOP
+    DBMS_OUTPUT.PUT_LINE(predictions(i));
+  END LOOP;  
+  
+END;
+/
   
 /*
  * test runs

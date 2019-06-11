@@ -1,22 +1,7 @@
 /*
 DROP TYPE MATRIX;
 /
-DROP TYPE ARRAY_2D;
-/
-DROP TYPE ARRAY_1D;
-/
 */
-
-/*
- * one-dimensional array type
- */
-CREATE OR REPLACE TYPE Array_1D IS TABLE OF FLOAT;
-/
-/*
- * two-dimensional array type
- */
-CREATE OR REPLACE TYPE Array_2D IS TABLE OF ARRAY_1D;
-/
 
 CREATE OR REPLACE TYPE Matrix AS OBJECT
 (
