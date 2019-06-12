@@ -34,7 +34,14 @@
 			
 			
 			<?php 
-				include("Check.php");
+			require("mail_site_MVC.php");	
+				if (isset($_GET["email"]))
+			 {
+				$view = new View($_GET['email']);
+				$model = new Model();
+				$controller = new Controller($view, $model);
+				$controller->doHaveIBeenPwned();
+			 }
 			?>
 		</section>
 
