@@ -12,6 +12,12 @@
     <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="stylesheet2.css" type="text/css" />
     <link rel="stylesheet" href="stylesheet.css" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <?php
+        if(isset($_SESSION['id'])){
+            echo '<script src="notifications.js"></script>';
+        }
+    ?>
 </head>
 
 <body>
