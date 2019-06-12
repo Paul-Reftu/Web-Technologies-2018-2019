@@ -68,7 +68,7 @@
 
             require_once "Mail.php";
             $from = "as@tw.com";
-            $to = "ruse.daniel.stefan@gmail.com";
+            $to = $_POST['reset'];
             $subject = "Reset Password";
             $body = "Enter the following link to reset your password: http://localhost/Web-Tehnologies-2018-2019/application/reset.php?id=" .$id. "&key=" .$key;
             $host = "smtp.sendgrid.net";

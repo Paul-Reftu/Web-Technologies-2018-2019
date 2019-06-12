@@ -100,7 +100,9 @@
             $id = $id['max(id)'] + 1;
             $values = $id.",'".$username."','".$password1."','".$email."',".$age.",'".$sex."')";
             $conn->query("insert into user values (" .$values);
-            echo "Success!";
+            echo '<div style="text-align: center;
+                    margin-top: 5%;font-weight: bold;font-size:30px;">
+                    Registered succesfully!</div>';
         }
 
 
