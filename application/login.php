@@ -38,8 +38,8 @@
                 <label >Password:</label>
                 <input type="password" required placeholder="Enter your password" name="password"/>
             </div>
-            <p><a href="forgotpass.html">Forgot password?</a></p>
-            <a href="makeaccount.html" id="register">Register</a>
+            <p><a href="forgotpass.php">Forgot password?</a></p>
+            <a href="makeaccount.php" id="register">Register</a>
             <button type="submit" id="login">Login</button>
         </form>
     </div>
@@ -65,7 +65,10 @@
                 exit();
 
             } else{
-                echo "Login failed!";
+                $message = "Login failed!\nUser or password incorrect!";
+                echo '<div style="text-align: center;
+                    margin-top: 5%;font-weight: bold;font-size:30px;color: red">
+                    Login failed!<br>User or password incorrect!</div>';
             }
 
             $conn->close();

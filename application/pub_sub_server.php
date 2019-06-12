@@ -131,8 +131,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 			"cve": "CVE-2011-2064",
 			"msb": []
 		}';
-  		$vuln[] = $json;
-  		$vuln[] = $json;
+  		//$vuln[] = $json;
+  		//$vuln[] = $json;
     	
   		foreach ($vuln as $v) {
   			$pub->update($v, $pub_sub);
