@@ -25,7 +25,7 @@
                 $this->navURLs[] = 'login.php';
                 $this->navURLs[] = 'makeaccount.php';
                 $this->navURLName[] = 'Login';
-                $this->navURLName[] = 'Ceate Account';   
+                $this->navURLName[] = 'Create Account';   
             }
             $this->currPage = basename($_SERVER['PHP_SELF']);
 
