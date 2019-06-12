@@ -33,9 +33,9 @@ class Subscriber {
 
 	public function notify(){
 		if (count($this->vulnerabilities) > 0){
-			foreach ($this->vulnerabilities as $v) {
-				echo json_encode($v) . '\n';
-			}
+			//foreach ($this->vulnerabilities as $v) {
+				echo json_encode($this->vulnerabilities);
+			//}
 		}
 	}
 
@@ -59,8 +59,10 @@ class PubSubServer {
 		$vuln = json_decode($msg, true);
 		foreach ($this->subscribers as $sub) {
 			foreach ($sub->topics as $topic) {
-				if (array_search($topic, $vuln['tags']) !== false){
+				if (strpos($vuln['description'], $topic) >= 0 &&  
+    				strpos($vuln['description'], $topic) < strlen($vuln['description'])) {
 					$sub->add($msg);
+					break;
 				}
 			}
 		}
@@ -118,8 +120,18 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
     	}
     	$pub_sub->register($sub);
     	$pub = new Publisher();
+    	$vuln = array();
   		// $vuln = compare();
-  		$json = '{"votes": 3700,"description": "best ip cam search I have found yet.","title": "Webcam","timestamp": "2010-03-15T13:32:32","tags": ["webcam","tw","test"],"query": "Server: SQ-WEBCAM"}';
+  		$json = '{
+			"source": "CVE",
+			"_id": "2011-2064",
+			"description": "Cisco IOS 12.4MDA before 12.4(24)MDA5 on the Cisco Content Services Gateway - Second Generation (CSG2) allows remote attackers to cause a denial of service (device reload) via crafted ICMP packets, aka Bug ID CSCtl79577.",
+			"osvdb": [73657],
+			"bid": [48581],
+			"cve": "CVE-2011-2064",
+			"msb": []
+		}';
+  		$vuln[] = $json;
   		$vuln[] = $json;
     	
   		foreach ($vuln as $v) {

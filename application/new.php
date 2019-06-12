@@ -21,26 +21,38 @@ include("Navbar.php");
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 	$buff = html_entity_decode($_POST['data']);
-	$buff = substr($buff, 0, -2);
+	// var_dump($buff);
+	echo '<br>';
 	$data = json_decode($buff, true);
-	$data = json_decode($data, true);
+	// var_dump($data);
+	echo '<main style="text-align: center;">';
 	echo '<div style="text-align: center;
-			margin-top: 10%;">';
-	foreach ($data as $key => $value) {
-		if(is_array($value)){
-			echo $key. ' : ';
-			$elems = '';
-			foreach ($value as $elem) {
-				$elems .= $elem .', ';
+			margin-top: 5%;font-weight: bold;font-size:40px;">
+			New Vulnerabilities</div>';
+		
+	foreach ($data as $json) {
+		echo '<div style="text-align: center;
+			margin-top: 7%;font-size: 25px; max-width:50%;
+			margin-left: auto;margin-right: auto;">';
+		$vuln = json_decode($json, true);
+		// var_dump($json);
+		foreach ($vuln as $key => $value) {
+			if(is_array($value)){
+				echo $key. ' : ';
+				$elems = '';
+				foreach ($value as $elem) {
+					$elems .= $elem .', ';
+				}
+				echo substr($elems, 0, -2);
+				echo '<br>';
 			}
-			echo substr($elems, 0, -2);
-			echo '<br>';
+			else{
+				echo $key. ' : ' .$value .'<br>';
+			}
 		}
-		else{
-			echo $key. ' : ' .$value .'<br>';
-		}
-	}
 	echo '</div>';
+	}
+	echo '</main>';
 }	
 
 include("Footer.php");
