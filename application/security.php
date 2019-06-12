@@ -29,8 +29,19 @@
 			<form>
 			Search for articles (you can use keywords like title, author's name, the date when the article was published etc.):<br>
 			<br>
+			
+			<?php
+
+				require_once("security_search/SecuritySearch.php");
+
+				new SecuritySearch();
+
+			?>
+
+			<!--
 			<input class="searchbar" type="text" name="search"> <input class="button" type="button" value="Search">
 			</form>
+			-->
 		</section>
 
 		<aside>
