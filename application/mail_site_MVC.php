@@ -190,7 +190,7 @@
 				}
 			}
 			else{
-				$this->return .= '<div style="font-weight: bold;font-size:30px;color:green" >No threats found. The site is dafe.</div> <br>';
+				$this->return .= '<div style="font-weight: bold;font-size:30px;color:green" >No threats found. The site is safe.</div> <br>';
 			}
 
 			$this->return .= '</div>';
