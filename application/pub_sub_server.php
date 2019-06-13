@@ -131,7 +131,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 			"cve": "CVE-2011-2064",
 			"msb": []
 		}';
-  		// $vuln[] = $json;
+		// if(rand(0,10) == 5){
+  // 			$vuln[] = $json;
+  // 		}
   		// $vuln[] = $json;
     	
   		foreach ($vuln as $v) {

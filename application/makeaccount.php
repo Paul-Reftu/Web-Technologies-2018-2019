@@ -94,13 +94,13 @@
                     Passwords does not match! </div>';
                 return;
             }
-            if (isset($_POST['age'])){
-                $age = $_POST['age'];
+            if ($_POST['age'] != ''){
+                $age = "'" .$_POST['age']. "'";
             }
             else{
                 $age = 'NULL';
             }
-            if (isset($_POST['sex'])){
+            if ($_POST['sex'] != ''){
                 $sex = $_POST['sex'];
             }
             else{
@@ -109,8 +109,9 @@
             $result = $conn->query("select max(id) from user");
             $id = $result->fetch_assoc();
             $id = $id['max(id)'] + 1;
-            $values = $id.",'".$username."','".$password1."','".$email."',".$age.",'".$sex."')";
-            $conn->query("insert into user values (" .$values);
+            $values = $id.",'".$username."','".$password1."','".$email."',".$age.",".$sex.")";
+            $conn->query("insert into user values (" .$values );
+
             echo '<div style="text-align: center;
                     margin-top: 5%;font-weight: bold;font-size:30px;">
                     Registered succesfully!</div>';
