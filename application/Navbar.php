@@ -8,11 +8,11 @@
         /*
          * URLs present on the navbar
          */
-        private $navURLs = array("index.php", "about.php", "contact.php", "security.php", "softvuln.php", "hackproofpro.php", "securitytools.php", "apiguide.php");
+        private $navURLs = array("index.php", "about.php", "contact.php", "security.php", "softvuln.php", "hackproofpro.php", "securitytools.php", "apiguide.php", "docs/api/index.html");
         /* 
          * name of the URLs on the navbar (e.g for "index.php" the name is "Home")
          */ 
-        private $navURLName = array("Home", "About", "Contact", "Security", "Software Vulnerabilities", "Hackproof Programming", "Security Tools", "API Guide");
+        private $navURLName = array("Home", "About", "Contact", "Security", "Software Vulnerabilities", "Hackproof Programming", "Security Tools", "API Guide", "App Doc");
 
         public function __construct() {
             if(isset($_SESSION['id']) && isset($_SESSION['user'])){
