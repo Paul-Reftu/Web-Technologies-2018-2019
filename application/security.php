@@ -33,7 +33,7 @@
 			<h2>
 			<b>Find information that is most relevant to you!</b>
 			</h2>
-			<form>
+			<!-- <form> -->
 			Search for articles (you can use keywords like title, author's name, the date when the article was published etc.):<br>
 			<br>
 			

@@ -1,4 +1,6 @@
 /*
+DROP PROCEDURE getPredictions;
+/
 DROP TABLE Minds;
 /
 DROP TYPE NeuralNetwork;
@@ -147,9 +149,9 @@ CREATE OR REPLACE TYPE BODY NeuralNetwork AS
      * split corpus sentences and collect them into our 'corpusSentences'
      * variable
      */
-    SELECT REGEXP_SUBSTR(corpus, '[^\.]+', 1, LEVEL) 
+    SELECT REGEXP_SUBSTR(corpus, '[^\.\!\?\:]+', 1, LEVEL) 
       BULK COLLECT INTO corpusSentences FROM DUAL CONNECT BY
-      REGEXP_SUBSTR(corpus, '[^\.]+', 1, LEVEL) IS NOT NULL;
+      REGEXP_SUBSTR(corpus, '[^\.\!\?\:]+', 1, LEVEL) IS NOT NULL;
       
     RETURN corpusSentences;
   END processCorpus;
@@ -417,9 +419,9 @@ END;
  * example of splitting sentences
  */
 /*
-SELECT LOWER(REGEXP_SUBSTR('Smith is a good guy. So is Jones. Maybe also Allen.', 
-  '[^\.]+', 1, LEVEL)) FROM DUAL CONNECT BY (REGEXP_SUBSTR(
-  'Smith is a good guy. So is Jones. Maybe also Allen.', '[^\.]+', 1,
+SELECT LOWER(REGEXP_SUBSTR('Smith is a good guy! So is Jones. Maybe also Allen.', 
+  '[^\.\!\?\:]+', 1, LEVEL)) FROM DUAL CONNECT BY (REGEXP_SUBSTR(
+  'Smith is a good guy. So is Jones. Maybe also Allen.', '[^\.\!\?\:]+', 1,
   LEVEL)) IS NOT NULL;
 */
 
@@ -457,20 +459,12 @@ BEGIN
   nn := NeuralNetwork();
   nn.preTraining(
     nn.processCorpus(
-      'The world is a small place.' ||
-      'World war two was one of the most catastrophic events to ever take place.' ||
-      'Many people fought in World War two.' ||
-      'Many people would like to see the world burn.' ||
-      'Not many people like to see this world.' ||
-      'He can see that it was not that difficult.' ||
-      'See that you succeed in this mission.' ||
-      'What you see is not necessarily what he sees.' ||
-      'See to it that he makes it.'
+      'Computer security cybersecurity or information technology security IT security is the protection of computer systems from theft or damage to their hardware software or electronic data as well as from disruption or misdirection of the services they provide. The field is growing in importance due to increasing reliance on computer systems the Internet and wireless networks such as Bluetooth and Wi-Fi and due to the growth of "smart" devices including smartphones televisions and the various tiny devices that constitute the Internet of things. Due to its complexity both in terms of politics and technology it is also one of the major challenges of the contemporary world. A vulnerability is a weakness in design implementation operation or internal control. Most of the vulnerabilities that have been discovered are documented in the Common Vulnerabilities and Exposures CVE database. An exploitable vulnerability is one for which at least one working attack or "exploit" exists. Vulnerabilities are often hunted or exploited with the aid of automated tools or manually using customized scripts.'
     ) 
   );
-  nn.training(5);
+  nn.training(100);
   
-  nn.predict('people', 5, predictions);
+  nn.predict('to', 5, predictions);
   
   DBMS_OUTPUT.PUT_LINE('Predictions: ');
   FOR i IN predictions.FIRST .. predictions.LAST LOOP
@@ -482,21 +476,21 @@ BEGIN
 END;
 /
 
-DECLARE
+CREATE OR REPLACE PROCEDURE getPredictions (keyword VARCHAR, noOfPredictions INTEGER, p_cursor OUT SYS_REFCURSOR) IS
 neuralNetwork Minds.nn%TYPE;
 predictions STRING_TABLE;
+temp VARCHAR(10000);
 BEGIN
 
-  SELECT nn INTO neuralNetwork FROM Minds;
+  SELECT nn INTO neuralNetwork FROM (
+    SELECT nn, ROWNUM "rn" FROM Minds
+  ) WHERE "rn" < 2;
   
-  neuralNetwork.predict('world', 5, predictions);
+  neuralNetwork.predict(keyword, noOfPredictions, predictions);
   
-  DBMS_OUTPUT.PUT_LINE('Predictions: ');
-  FOR i IN predictions.FIRST .. predictions.LAST LOOP
-    DBMS_OUTPUT.PUT_LINE(predictions(i));
-  END LOOP;  
+  OPEN p_cursor FOR SELECT * FROM TABLE(predictions);
   
-END;
+END getPredictions;
 /
   
 /*
