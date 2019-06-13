@@ -36,7 +36,7 @@
 
 				$keyword = $_POST["keyword"];
 
-				$db = new OracleDatabase("STUDENT", "student0", "localhost/XE");
+				$db = new OracleDatabase("student", "STUDENT", "localhost/orcl");
 				$dbConn = $db->getConn();
 
 				$query = "

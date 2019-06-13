@@ -26,23 +26,6 @@
         require_once("Navbar.php");
     ?>
 <main id="softvuln">
-        <div id="filter">
-            <p>Filter type 1</p>
-            <ul>
-                <li><input type="checkbox"> filter 1</li>
-                <li><input type="checkbox"> filter 2</li>
-                <li><input type="checkbox"> filter 3</li>
-                <li><input type="checkbox"> filter 4</li>
-            </ul>
-            <p>Filter type 2</p>
-            <ul>
-                <li><input type="checkbox"> filter 1</li>
-                <li><input type="checkbox"> filter 2</li>
-                <li><input type="checkbox"> filter 3</li>
-                <li><input type="checkbox"> filter 4</li>
-            </ul>
-
-        </div>
         <div id="vuln">
         <div class="search">
              <form action=<?php echo $_SERVER['PHP_SELF']; ?> method="get">
@@ -50,17 +33,6 @@
                 <input type="text" name="description" class="search" placeholder="Search for what you want here" />
                 <button type="submit">Search</button>
             </form>
-        </div>
-        <div id="vulninf">
-            <div class="vulnerabilitate">
-                <div>Date</div>
-                <div><abbr title="Downloadable">D</abbr></div>
-                <div><abbr title="Vulnerable Aplication">A</abbr></div>
-                <div><abbr title="Verified">V</abbr></div>
-                <div>Title</div>
-                <div>Type</div>
-                <div>Platform</div>
-            </div>
         </div>
     </div>
     </main>

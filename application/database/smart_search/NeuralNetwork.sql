@@ -496,7 +496,7 @@ END getPredictions;
 /*
  * test runs
  */
- /*
+/*
 DECLARE
 myTab STRING_TABLE := STRING_TABLE();
 myMap MapStringInt := MapStringInt();
