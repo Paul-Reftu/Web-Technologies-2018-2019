@@ -1,8 +1,12 @@
 <?php
 
+	/**
+	 * @author Paul-Reftu
+	 */
+
 	require_once($_SERVER["DOCUMENT_ROOT"] . "/Web-Tehnologies-2018-2019/application/auxiliaries/simplehtmldom_1_9/simple_html_dom.php");
 
-	/*
+	/**
 	 * class whose instance represents a crawler that collects
 	 *  information w.r.t a given set of exploits - information
 	 *  found in the National Vulnerability Database
@@ -25,16 +29,17 @@
 		 */
 		private $vulnCveId;
 
-		/*
+		/**
+		 * @param $vulnCveId
 		 * construct an object of type 'NvdCrawler' w/ the given CVE ID
 		 */
 		public function __construct($vulnCveId) {
 
 			$this->vulnCveId = $vulnCveId;
 
-		}
+		} // END of __construct()
 
-		/*
+		/**
 		 * @return an array of references w.r.t the exploit identified by the currently-declared 'vulnCveId' (i.e, the CVE id of said exploit), or null if $this->vulnCveId is not set (i.e, if it is null)
 		 *
 		 * crawl through the National Vulnerability Database
@@ -76,23 +81,23 @@
 
 		} // END of collectRefs()
 
-		/*
+		/**
 		 * @return the CVE id of the target vulnerability of this crawler
 		 */
 		public function getVulnCveId() {
 
 			return $this->vulnCveId;
 
-		}
+		} // END of getVulnCveId()
 
-		/*
+		/**
 		 * @param $vulnCveId
 		 */
 		public function setVulnCveId($vulnCveId) {
 
 			$this->vulnCveId = $vulnCveId;
 
-		}
+		} // END of setVulnCveId()
 
 	} // END of NvdCrawler class
 

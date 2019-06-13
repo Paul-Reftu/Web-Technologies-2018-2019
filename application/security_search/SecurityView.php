@@ -1,12 +1,25 @@
 <?php
 
+	/**
+	 * @author Paul-Reftu
+	 */
+
 	require_once("GoogleEngine.php");
 	require_once("OracleDatabase.php");
 
+	/**
+	 * the View part of our security info. search functionality
+	 */
 	class SecurityView {
 
+		/**
+		 * implicit constructor - momentarily does nothing of note
+		 */
 		public function __construct() {}
 
+		/**
+		 * @param $googleEngine
+		 */
 		public function printSecurityInfo($googleEngine) {
 
 			echo "<script>
@@ -24,6 +37,7 @@
 
 			echo "
 				<form action=\"security.php\" method=\"POST\">
+					The following is a preview of the Smart Search functionality. <br/>
 					Predict me! <br/>
 
 					<input type=\"text\" name=\"keyword\"/>
@@ -39,50 +53,59 @@
 				$db = new OracleDatabase("STUDENT", "student0", "localhost/XE");
 				$dbConn = $db->getConn();
 
-				$query = "
-						BEGIN
-							getPredictions(:key, 5, :cursor);
-						END;
-						"
-				;
+				if (!$dbConn || $dbConn == null) {
 
-				$stmt = oci_parse($dbConn, $query);
+					echo "Connection to Oracle DB failed. Smart Search is therefore NOT available.";
 
-				$predictionsCursor = oci_new_cursor($dbConn);
-				oci_bind_by_name($stmt, ":key", $keyword);
-				oci_bind_by_name($stmt, ":cursor", $predictionsCursor, -1, OCI_B_CURSOR);
+				} // end of if block that runs if conn. to DB has failed
+				else {
 
-				oci_execute($stmt);
+					$query = "
+							BEGIN
+								getPredictions(:key, 5, :cursor);
+							END;
+							"
+					;
 
-				echo "Predictions: " . "<br/><br/>";
+					$stmt = oci_parse($dbConn, $query);
 
-				if (oci_execute($stmt)) {
+					$predictionsCursor = oci_new_cursor($dbConn);
+					oci_bind_by_name($stmt, ":key", $keyword);
+					oci_bind_by_name($stmt, ":cursor", $predictionsCursor, -1, OCI_B_CURSOR);
 
-					oci_execute($predictionsCursor, OCI_DEFAULT);
+					oci_execute($stmt);
 
-					echo "<table border='1'>";
-					while ($rs = oci_fetch_array($predictionsCursor, OCI_RETURN_NULLS+OCI_ASSOC)) {
+					echo "Predictions: " . "<br/><br/>";
 
-						echo "<tr>";
+					if (oci_execute($stmt)) {
 
-						foreach ($rs as $row) {
+						oci_execute($predictionsCursor, OCI_DEFAULT);
 
-							echo "<td>" . ($row !== null ? htmlentities($row, ENT_QUOTES) : "&nbsp") . "</td>";
+						echo "<table border='1'>";
+						while ($rs = oci_fetch_array($predictionsCursor, OCI_RETURN_NULLS+OCI_ASSOC)) {
+
+							echo "<tr>";
+
+							foreach ($rs as $row) {
+
+								echo "<td>" . ($row !== null ? htmlentities($row, ENT_QUOTES) : "&nbsp") . "</td>";
+
+							}
+
+							echo "</tr>";
 
 						}
+						echo "</table>";
 
-						echo "</tr>";
+					} // end of conditional block (oci_execute($stmt))
 
-					}
-					echo "</table>";
-
-				}
+				} // end of else block that runs if conn. to DB is successful
 
 			}
 
-		}
+		} // END of printSecurityInfo()
 
-	}
+	} // end of SecurityView class
 
 
 ?>

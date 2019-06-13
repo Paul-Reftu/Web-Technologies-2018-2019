@@ -1,12 +1,18 @@
 <?php
 
+	/**
+ 	 * @author Paul-Reftu
+ 	 */
+
 	require_once($_SERVER["DOCUMENT_ROOT"] . "/Web-Tehnologies-2018-2019/application/soft_vuln/ExploitSeeker.php");
 	require_once($_SERVER["DOCUMENT_ROOT"] . "/Web-Tehnologies-2018-2019/application/soft_vuln/NvdCrawler.php");
 
 	header("Access-Control-Allow-Origin: *");
 	header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
 
-	/*
+	/**
+	 * TODO perhaps split this class into multiple ones?
+	 * 
 	 * class whose instance represents Security Alerter's API (version 1)
 	 *
 	 * currently supported requests:
@@ -20,7 +26,11 @@
 		private $currPageName = "v1.php";
 		private $exploitsResourceName = "exploits";
 
-
+		/**
+		 * TODO Refactoring to split the work of this method (it seems to be immense! although that is just because of all the switch cases)
+		 *
+		 * handle the HTTP requests received on the page where this class is instantiated
+		 */
 		public function __construct() {
 
 			$uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
@@ -182,8 +192,14 @@
 
 			} // end of switch for http request method
 
-		}
+		} // END of __construct()
 
+		/**
+		 * TODO make this method seem less abstract!
+		 *
+		 * @param $list
+		 * @return the name of the current page, and -1 if it is not found
+		 */
 		private function findCurrPageName($list) {
 
 			for ($i = 0; $i < sizeof($list); $i++)
@@ -192,8 +208,14 @@
 
 			return -1;
 
-		}
+		} // END of findCurrPageName()
 
+		/**
+		 * TODO make this method seem less abstract!
+		 * 
+		 * @param $uri
+		 * @return true if the given URI is valid, false otherwise
+		 */
 		private function isURIValid($uri) {
 
 			$uri_parts = explode("/", $uri);
@@ -208,8 +230,14 @@
 
 			return true;
 
-		}
+		} // END of isURIValid()
 
+		/**
+		 * TODO make this method seem less abstract!
+		 *
+		 * @param $uri
+		 * @return the id of the exploit identified in the given URI, and null if the id cannot be found at all
+		 */
 		private function getExploitId($uri) {
 
 			if (!$this->isURIValid($uri))
@@ -224,8 +252,12 @@
 
 			return $uri_parts[$pageNameIndex + 2];
 
-		}
+		} //END of getExploitId
 
+		/**
+		 * @param $json
+		 * @return the html conversion of the given json 
+		 */
 		private function jsonToHTML($json) {
 
 			$html = "<table style='border: 4px dashed aqua'>";
@@ -267,9 +299,9 @@
 
 			return $html;
 
-		}
+		} // END of jsonToHTML
 
-	}
+	} // end of APP_V1 class
 
 	new API_V1();
 

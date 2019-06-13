@@ -1,5 +1,9 @@
 <?php
 
+	/**
+	 * @author Paul-Reftu
+	 */
+
 	require_once("ExploitSeeker.php");
 	require_once("Exploit.php");
 	require_once("ExploitView.php");
@@ -8,7 +12,7 @@
 	require_once("NotAnExploitViewException.php");
 	require_once("NotAnExploitListException.php");
 
-	/*
+	/**
 	 * class whose instance performs searches w.r.t software vulnerabilities and that prints their information accordingly
 	 *
 	 * this class obeys the MVC design pattern
@@ -41,7 +45,7 @@
 		 */
 		private $maxNoOfPropReadChars = 500;
 
-		/*
+		/**
 		 * construct an object of type 'SoftVulnSearch', doing so running Shodan's API to get information w.r.t a particular given exploit and then providing the view to those results
 		 */
 		public function __construct() {

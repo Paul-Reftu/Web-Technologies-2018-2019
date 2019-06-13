@@ -1,3 +1,7 @@
+/**
+ * @author Paul-Reftu
+ */
+
 /*
  * if the following types are to be replaced, then they must be 
  * either replaced in the reverse order due to the linear 1-directional

@@ -1,3 +1,7 @@
+/**
+ * @author Paul-Reftu
+ */
+
 /*
 DROP PROCEDURE getPredictions;
 /
@@ -447,9 +451,12 @@ SELECT * FROM ALL_TYPE_ATTRS WHERE TYPE_NAME='ARRAY_1D';
 */
 
 /*
- * usage example
+ * neural network creation, training and storage
+ *
+ * WARNING: MAY TAKE A WHILE - AROUND 1 HOUR
+ *  IF YOU DO NOT HAVE THAT AMOUNT OF TIME, THEN DECREASE THE NO. GIVEN 
+ *  AS PARAMETER TO THE training() FUNCTION IN THE ANONYMOUS BLOCK BELOW
  */
-
 SET SERVEROUTPUT ON;
 DECLARE
   nn NeuralNetwork;
@@ -462,7 +469,8 @@ BEGIN
       'Computer security cybersecurity or information technology security IT security is the protection of computer systems from theft or damage to their hardware software or electronic data as well as from disruption or misdirection of the services they provide. The field is growing in importance due to increasing reliance on computer systems the Internet and wireless networks such as Bluetooth and Wi-Fi and due to the growth of "smart" devices including smartphones televisions and the various tiny devices that constitute the Internet of things. Due to its complexity both in terms of politics and technology it is also one of the major challenges of the contemporary world. A vulnerability is a weakness in design implementation operation or internal control. Most of the vulnerabilities that have been discovered are documented in the Common Vulnerabilities and Exposures CVE database. An exploitable vulnerability is one for which at least one working attack or "exploit" exists. Vulnerabilities are often hunted or exploited with the aid of automated tools or manually using customized scripts.'
     ) 
   );
-  nn.training(100);
+  -- DECREASE THIS IF YOU DON'T WANT TO WAIT FOR PROPER TRAINING
+  nn.training(100); 
   
   nn.predict('to', 5, predictions);
   

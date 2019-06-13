@@ -1,3 +1,7 @@
+/**
+ * @author Paul-Reftu
+ */
+
 /*
 DROP PACKAGE Math;
 /
