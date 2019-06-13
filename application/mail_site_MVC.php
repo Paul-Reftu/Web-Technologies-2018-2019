@@ -171,7 +171,7 @@
 				$matches = array();
 				$matches = $json['matches'];
 				$matches_no = count($matches);
-				$this->return .= '<div style="font-weight: bold;font-size:30px;color: red">Found ' . $matches_no . ' matches. </div><br>';
+				$this->return .= '<div style="font-weight: bold;font-size:30px;color: red">Found ' . $matches_no . ' threats. </div><br>';
 				$this->return .= '<br>';
 
 				if($matches_no != 0){
@@ -190,7 +190,7 @@
 				}
 			}
 			else{
-				$this->return .= '<div style="font-weight: bold;font-size:30px;color:green" >No matches found.</div> <br>';
+				$this->return .= '<div style="font-weight: bold;font-size:30px;color:green" >No threats found. The site is dafe.</div> <br>';
 			}
 
 			$this->return .= '</div>';

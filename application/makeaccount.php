@@ -76,18 +76,22 @@
             $email = $_POST['email'];
             $result = $conn->query("select id from user where username='".$username."'");
             if ($result->num_rows > 0){
-                echo "Username exists!";
+                echo '<div style="text-align: center;
+                    margin-top: 5%;font-weight: bold;font-size:30px;color: red">Username exists!</div';
                 return;
             }
             $result = $conn->query("select id from user where email='".$email."'");
             if ($result->num_rows > 0){
-                echo "Email exists!";
+                echo '<div style="text-align: center;
+                    margin-top: 5%;font-weight: bold;font-size:30px;color: red">Email exists!</div>';
                 return;
             }
             $password1 = $_POST['password1'];
             $password2 = $_POST['password2'];
             if ($password1 != $password2){
-                echo "Passwords does not match!";
+                echo '<div style="text-align: center;
+                    margin-top: 5%;font-weight: bold;font-size:30px;color: red"> 
+                    Passwords does not match! </div>';
                 return;
             }
             if (isset($_POST['age'])){
