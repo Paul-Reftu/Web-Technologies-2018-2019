@@ -9,28 +9,33 @@
 	 */
 	class NvdCrawler {
 
+		/*
+		 * the url to the source of the exploit information
+		 */
 		const NVD_ROOT_URL = "https://nvd.nist.gov/vuln/detail/";
+		/*
+		 * the id of the 'div' container that contains the information we seek w.r.t a given exploit
+		 *
+		 * THIS ID MAY CHANGE IN THE HOST WEBSITE - IF THAT HAPPENS, THAT WILL BE A PRIMARY SOURCE OF ERROR
+		 */
 		const NVD_REFERENCE_DIV_ID = "p_lt_WebPartZone1_zoneCenter_pageplaceholder_p_lt_WebPartZone1_zoneCenter_VulnerabilityDetail_VulnFormView_VulnHyperlinksPanel";
 
+		/*
+		 * the Common Vulnerability ID of the currently sought exploit
+		 */
 		private $vulnCveId;
 
 		/*
-		 * TODO Exception checking
+		 * construct an object of type 'NvdCrawler' w/ the given CVE ID
 		 */
 		public function __construct($vulnCveId) {
 
-			if ($vulnCveId !== null) {
-
-				$this->vulnCveId = $vulnCveId;
-
-			}
+			$this->vulnCveId = $vulnCveId;
 
 		}
 
 		/*
-		 * TODO Exception checking
-		 *
-		 * @return an array of references w.r.t the exploit identified by the currently-declared 'vulnCveId' (i.e, the CVE id of said exploit)
+		 * @return an array of references w.r.t the exploit identified by the currently-declared 'vulnCveId' (i.e, the CVE id of said exploit), or null if $this->vulnCveId is not set (i.e, if it is null)
 		 *
 		 * crawl through the National Vulnerability Database
 		 *  and obtain helpful references w.r.t a particular exploit
@@ -39,51 +44,29 @@
 
 			if ($this->vulnCveId !== null) {
 
-				//$startTime = microtime(true);
-
 				$cve = $this->vulnCveId;
 
 				$references = array();
 
-				if ($cve !== null) {
+				$html = file_get_html(self::NVD_ROOT_URL . $cve);
 
-					$html = file_get_html(self::NVD_ROOT_URL . $cve);
+				$div = $html->find("div[id=" . self::NVD_REFERENCE_DIV_ID . "]", 0);
 
-					$div = $html->find("div[id=" . self::NVD_REFERENCE_DIV_ID . "]", 0);
+				$ref_table = $div->find("table", 0);
 
-					$ref_table = $div->find("table", 0);
+				$ref_table_body = $ref_table->find("tbody", 0);
 
-					$ref_table_body = $ref_table->find("tbody", 0);
+				foreach ($ref_table_body->find("tr") as $ref_table_body_row) {
 
-					foreach ($ref_table_body->find("tr") as $ref_table_body_row) {
+					$ref_table_body_row_data = $ref_table_body_row->find("td", 0);
 
-						$ref_table_body_row_data = $ref_table_body_row->find("td", 0);
+					$ref_anchor = $ref_table_body_row_data->find("a", 0);
 
-						$ref_anchor = $ref_table_body_row_data->find("a", 0);
+					$ref_href = $ref_anchor->href;
 
-						$ref_href = $ref_anchor->href;
+					array_push($references, $ref_href);
 
-						array_push($references, $ref_href);
-
-					} // end of loop through table rows
-
-				} // end of '$cve !== null' conditional
-
-				/*
-				$endTime = microtime(true);
-				$elapsedTime = $endTime - $startTime;
-
-				if ($elapsedTime < 0.3)
-					$markColor = "green";
-				else if ($elapsedTime < 0.6)
-					$markColor = "orange";
-				else 
-					$markColor = "red";
-
-				$mark = "<span style='color:" . $markColor . "'>" . $elapsedTime . "</span>";
-
-				echo "Time taken for reference collection: " . $mark . "<br/>";
-				*/
+				} // end of loop through table rows
 
 				return $references;
 
@@ -93,12 +76,18 @@
 
 		} // END of collectRefs()
 
+		/*
+		 * @return the CVE id of the target vulnerability of this crawler
+		 */
 		public function getVulnCveId() {
 
 			return $this->vulnCveId;
 
 		}
 
+		/*
+		 * @param $vulnCveId
+		 */
 		public function setVulnCveId($vulnCveId) {
 
 			$this->vulnCveId = $vulnCveId;
