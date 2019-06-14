@@ -66,8 +66,6 @@
                 $id = $id['id'];
                 $_SESSION['id'] = $id;
                 $_SESSION['user'] = $user;
-                $result = $conn->query("select date from date where id= " .$_SESSION['id']);
-                $row = $result->fetch_assoc();
                 header("Location: http://localhost/Web-Tehnologies-2018-2019/application/index.php"); /* Redirect browser */
                 exit();
 
