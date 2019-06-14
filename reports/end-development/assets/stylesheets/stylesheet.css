@@ -1,0 +1,51 @@
+html {
+	font-size: 20px;
+    font-family: "Times New Roman", "Times", "Serif";
+}
+
+@media(max-width: 1580px) {
+	html {
+		font-size: 18px;
+	}
+}
+
+@media(max-width: 980px) {
+	html {
+		font-size: 16px;
+	}
+}
+
+@media(min-width: 780px) {
+	.facilities {
+		width: 780px;
+	}
+}
+.facilities {
+	margin-left: 3%;
+	margin-right: 3%;
+}
+img {
+	width:100%; 
+	height:100%; 
+	border:2px dashed aqua;
+	margin-top: 1em;
+		margin-bottom: .2em;
+
+	}
+
+video {
+
+	width:100%;
+	height:100%;
+
+}
+
+section {
+
+	margin-top: 5em;
+	margin-bottom: 5em;
+	border: 1px solid black;
+	border-radius: 2em;
+	padding: 2em;
+
+}
