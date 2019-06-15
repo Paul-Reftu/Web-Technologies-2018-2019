@@ -122,18 +122,15 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
     	$pub = new Publisher();
     	$vuln = array();
   		// $vuln = compare();
-  		$json = '{
-			"source": "CVE",
-			"_id": "2011-2064",
-			"description": "Cisco IOS 12.4MDA before 12.4(24)MDA5 on the Cisco Content Services Gateway - Second Generation (CSG2) allows remote attackers to cause a denial of service (device reload) via crafted ICMP packets, aka Bug ID CSCtl79577.",
-			"osvdb": [73657],
-			"bid": [48581],
-			"cve": "CVE-2011-2064",
-			"msb": []
-		}';
-		// if(rand(0,10) == 5){
-  // 			$vuln[] = $json;
-  // 		}
+  // 		$json = '{
+		// 	"source": "CVE",
+		// 	"_id": "2011-2064",
+		// 	"description": "Cisco IOS 12.4MDA before 12.4(24)MDA5 on the Cisco Content Services Gateway - Second Generation (CSG2) allows remote attackers to cause a denial of service (device reload) via crafted ICMP packets, aka Bug ID CSCtl79577.",
+		// 	"osvdb": [73657],
+		// 	"bid": [48581],
+		// 	"cve": "CVE-2011-2064",
+		// 	"msb": []
+		// }';
   		// $vuln[] = $json;
     	
   		foreach ($vuln as $v) {
